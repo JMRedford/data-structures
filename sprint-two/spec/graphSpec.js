@@ -62,4 +62,17 @@ describe('graph', function() {
     expect(graph.hasEdge('penguins', 'satsumas')).to.equal(true);
     expect(graph.hasEdge('satsumas', 'satsumas')).to.equal(true);
   });
+
+  it('should treat edges as unordered', function() {
+    graph.addNode('a');
+    graph.addNode('b');
+    graph.addEdge('a', 'b');
+    expect(graph.hasEdge('a','b')).to.equal(true);
+    expect(graph.hasEdge('b','a')).to.equal(true);
+  });
+
+  /*it('should not add a node that is already present', function() {
+    graph.addNode('a');
+
+  });*/
 });
