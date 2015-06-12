@@ -66,7 +66,24 @@ describe('linkedList', function() {
     linkedList.addToTail(testArray);
     var testRetArray = linkedList.findKey("a").value;
     expect(testRetArray).to.equal(testArray);
+  });
 
+  it('should remove the node with a given key (not tail)', function() {
+    var testArray = ["a", 2];
+    linkedList.addToTail(testArray);
+    linkedList.addToTail(["b", 1]);
+    linkedList.removeKey("a");
+    expect(linkedList.contains(testArray)).to.equal(false);
+  });
+
+  it('should remove the node with a given key when that node is the tail', function() {
+    var test1 = ["a", 2];
+    linkedList.addToTail(test1);
+    linkedList.addToTail(["b", 1]);
+    linkedList.removeKey("b");
+    expect(linkedList.contains(["b", 1])).to.equal(false);
+    expect(linkedList.tail.value).to.equal(test1);
+    expect(linkedList.tail.next).to.equal(null);
   });
 
 

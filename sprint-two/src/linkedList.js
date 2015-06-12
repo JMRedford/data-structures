@@ -48,6 +48,26 @@ var LinkedList = function(){
     return null;
   }
 
+  list.removeKey = function(target){
+    var node = list.head;;
+    if (node.value[0] === target){
+      list.removeHead();
+    }
+    else{
+      while(node.next && node.next.value[0] !== target){
+        node = node.next;
+      }
+      if (node.next){
+        node.next = node.next.next;
+        if(node.next === null) {
+          list.tail = node;
+        }
+        return;
+      }
+    }
+
+  }
+
   return list;
 };
 
