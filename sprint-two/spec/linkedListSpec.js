@@ -61,6 +61,14 @@ describe('linkedList', function() {
     expect(linkedList.tail).to.equal(null);
   });
 
+  it('should find the node with a given key', function() {
+    var testArray = ["a", 2];
+    linkedList.addToTail(testArray);
+    var testRetArray = linkedList.findKey("a").value;
+    expect(testRetArray).to.equal(testArray);
+
+  });
+
 
   // add more tests here to test the functionality of linkedList
 });

@@ -37,6 +37,17 @@ var LinkedList = function(){
     return false;
   };
 
+  list.findKey = function(target){
+    var node = list.head;
+    while(node) {
+      if(node.value[0] === target) {
+        return node;
+      }
+      node = node.next;
+    }
+    return null;
+  }
+
   return list;
 };
 
