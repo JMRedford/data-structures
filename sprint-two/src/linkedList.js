@@ -52,6 +52,7 @@ var LinkedList = function(){
     var node = list.head;;
     if (node.value[0] === target){
       list.removeHead();
+      return true;
     }
     else{
       while(node.next && node.next.value[0] !== target){
@@ -62,7 +63,9 @@ var LinkedList = function(){
         if(node.next === null) {
           list.tail = node;
         }
-        return;
+        return true;
+      } else {
+        return false;
       }
     }
 
