@@ -61,4 +61,17 @@ describe('doublyLinkedList', function() {
     doublyLinkedList.addToHead(4);
     expect(doublyLinkedList.contains(3)).to.equal(true);
   });
+
+  it("remove tail should return null for an empty list", function(){
+    var val = doublyLinkedList.removeTail();
+    expect(val).to.equal(null);
+  });
+
+  it("should return the value of a tail and adjust the tail", function(){
+    doublyLinkedList.addToTail(2);
+    doublyLinkedList.addToTail(3);
+    var val = doublyLinkedList.removeTail();
+    expect(val).to.equal(3);
+    expect(doublyLinkedList.tail.value).to.equal(2);
+  });
 });

@@ -21,7 +21,15 @@ dllMethods.addToHead = function(value) {
 }
 
 dllMethods.removeTail = function() {
-
+  var remNode = this.tail;
+  if (remNode){
+    this.tail = remNode.previous;
+    if (!this.tail){
+      this.head = null;
+    }
+    return remNode.value;
+  }
+  return null;
 }
 
 dllMethods.removeHead = function() {
