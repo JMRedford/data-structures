@@ -41,4 +41,27 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should have links to a parent', function() {
+    expect(tree.parent).to.equal(null);
+    tree.addChild(15);
+    var child = tree.children[0];
+    expect(child.parent).to.equal(tree);
+  });
+
+  it('should disconnect both trees when removeFromParent is called on the child', function() {
+    tree.addChild(15);
+    var child = tree.children[0];
+    child.removeFromParent();
+    expect(child.parent).to.equal(null);
+    expect(tree.children.length).to.equal(0);
+    tree.addChild(5);
+    tree.children[0].addChild(2);
+    tree.children[0].addChild(3);
+    var grandChild = tree.children[0].children[1];
+    grandChild.removeFromParent();
+    expect(grandChild.parent).to.equal(null);
+    expect(tree.children[0].children.length).to.equal(1);
+
+  })
+
 });
