@@ -47,6 +47,20 @@ bstMethods.contains = function(value){
   }
 }
 
+bstMethods.maxDepth = function(){
+  if (this.left == this.right){
+    return Math.max(this.left.maxDepth(), this.right.maxDepth())+1;
+  }
+  else return 1;
+}
+
+bstMethods.minDepth = function(){
+  if (this.left && this.right){
+    return Math.min(this.left.minDepth(), this.right.minDepth())+1;
+  }
+  else return 1;
+}
+
 bstMethods.depthFirstLog = function(cb){
   cb(this.value);
   if(this.left) {

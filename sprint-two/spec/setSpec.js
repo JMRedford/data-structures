@@ -24,4 +24,13 @@ describe('set', function() {
     expect(set.contains("Mel Gibson")).to.equal(false);
   });
 
+  it('should add objects to a set', function() {
+    var testObj1 = {};
+    var testObj2 = {name: "testobj"};
+    set.add(testObj1);
+    set.add(testObj2);
+    expect(set.contains(testObj1)).to.equal(true);
+    expect(set.contains(testObj2)).to.equal(true);
+  });
+
 });

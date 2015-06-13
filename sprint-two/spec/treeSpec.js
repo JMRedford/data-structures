@@ -61,7 +61,20 @@ describe('tree', function() {
     grandChild.removeFromParent();
     expect(grandChild.parent).to.equal(null);
     expect(tree.children[0].children.length).to.equal(1);
-
   })
 
+  it('should traverse the tree and call a function at each node', function() {
+    tree.addChild(1);
+    tree.addChild(2);
+    child1 = tree.children[0];
+    child2 = tree.children[1];
+    child1.addChild(11);
+    child1.addChild(12);
+    child2.addChild(21);
+
+    var array = [];
+    var func = function(value) {array.push(value);};
+    tree.traverse(func);
+    expect(array).to.eql([undefined, 1,11,12,2,21]);
+  });
 });
